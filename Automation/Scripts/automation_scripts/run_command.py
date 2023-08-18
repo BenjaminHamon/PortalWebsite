@@ -49,7 +49,11 @@ def create_argument_parser(command_collection: List[str]) -> argparse.ArgumentPa
 
 def list_commands() -> List[str]:
     return [
+        "automation_scripts.commands.clean.CleanCommand",
+        "automation_scripts.commands.distribution.DistributionCommand",
         "automation_scripts.commands.info.InfoCommand",
+        "automation_scripts.commands.lint.LintCommand",
+        "automation_scripts.commands.test.TestCommand",
     ]
 
 
