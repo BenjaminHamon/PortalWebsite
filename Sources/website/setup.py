@@ -23,6 +23,10 @@ def run_setup() -> None:
         url = project_configuration["ProjectUrl"],
         packages = setuptools.find_packages(include = [ "benjaminhamon_portal_website", "benjaminhamon_portal_website.*" ]),
         python_requires = "~= 3.9",
+
+        install_requires = [
+            "Flask ~= 2.3.2",
+        ],
     )
 
 
