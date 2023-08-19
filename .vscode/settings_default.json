@@ -1,6 +1,10 @@
 {
 	"$schema": "./schema.json",
 
+	"files.associations": {
+		"*.html": "jinja-html",
+	},
+
 	"python.analysis.extraPaths": [ "./Automation/Setup" ],
 	"python.analysis.typeCheckingMode": "basic",
 

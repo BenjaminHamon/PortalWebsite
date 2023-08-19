@@ -1,0 +1,25 @@
+.link-entry
+{
+	padding: 0;
+}
+
+.link-entry > a
+{
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+	padding: 1em;
+	text-decoration: none;
+}
+
+.link-entry > a > .heading
+{
+	font-size: 2em;
+	text-align: center;
+}
+
+.link-entry > a > .description
+{
+	font-size: 1em;
+	text-align: center;
+}

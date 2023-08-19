@@ -27,10 +27,13 @@ def main():
 
         automation_helpers.log_script_information(configuration, arguments.simulate)
         command_instance.check_requirements(arguments, environment = environment, configuration = configuration)
-        run_coroutine = command_instance.run_async(arguments, environment = environment, configuration = configuration, simulate = arguments.simulate)
 
-        asyncio_context = AsyncioContext()
-        asyncio_context.run(run_coroutine)
+        if type(arguments.command_instance).__name__ == "RunWebsiteCommand": # Flask application running is not awaitable
+            command_instance.run(arguments, environment = environment, configuration = configuration, simulate = arguments.simulate)
+
+        else:
+            asyncio_context = AsyncioContext()
+            asyncio_context.run(command_instance.run_async(arguments, environment = environment, configuration = configuration, simulate = arguments.simulate))
 
 
 def create_argument_parser(command_collection: List[str]) -> argparse.ArgumentParser:
@@ -53,6 +56,7 @@ def list_commands() -> List[str]:
         "automation_scripts.commands.distribution.DistributionCommand",
         "automation_scripts.commands.info.InfoCommand",
         "automation_scripts.commands.lint.LintCommand",
+        "automation_scripts.commands.run_website.RunWebsiteCommand",
         "automation_scripts.commands.test.TestCommand",
     ]
 

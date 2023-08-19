@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+
+    <head>
+        <title>{{ config['WEBSITE_TITLE'] }}</title>
+        <meta name="viewport" content="width=device-width"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'layout.css') }}"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'generic.css') }}"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'content.css') }}"/>
+    </head>
+
+    <body>
+
+        <header>
+            <div class="title">
+                <a href="{{ url_for('application.home') }}"><p>Benjamin Hamon</p></a>
+            </div>
+        </header>
+
+        <main>
+
+            {% block content %}{% endblock %}
+
+        </main>
+
+        <footer>
+            <div>
+                <p>{{ config['WEBSITE_TITLE'] }}</p>
+            </div>
+            <div>
+                <a href="https://github.com/BenjaminHamon/PortalWebsite/">Sources</a>
+                <a href="mailto:development@benjaminhamon.com">Contact</a>
+            </div>
+            <div>
+                {% if config['WEBSITE_VERSION'] %}
+                <p>Version {{ config['WEBSITE_VERSION'] }} ({{ config['WEBSITE_DATE'] }})</p>
+                <p>{{ config['WEBSITE_COPYRIGHT'].replace("(c)", "©") }}</p>
+                {% else %}
+                <p>Development Version</p>
+                {% endif %}
+            </div>
+        </footer>
+
+    </body>
+
+    {% block scripts %}{% endblock %}
+
+</html>
