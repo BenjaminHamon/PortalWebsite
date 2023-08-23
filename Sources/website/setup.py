@@ -14,6 +14,12 @@ import automation_helpers # pylint: disable = wrong-import-position
 def run_setup() -> None:
     project_configuration = automation_helpers.load_project_configuration(workspace_directory)
 
+    resource_patterns = [
+        'static/**/*.css',
+        'static/**/*.jpeg',
+        'templates/**/*.html',
+    ]
+
     setuptools.setup(
 		name = "benjaminhamon-portal-website",
 		description = "Website for www.benjaminhamon.com",
@@ -27,6 +33,10 @@ def run_setup() -> None:
         install_requires = [
             "Flask ~= 2.3.2",
         ],
+
+        package_data = {
+            "benjaminhamon_portal_website": automation_helpers.list_package_data("benjaminhamon_portal_website", resource_patterns),
+        },
     )
 
 

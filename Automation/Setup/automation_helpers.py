@@ -1,9 +1,10 @@
 import contextlib
+import glob
 import json
 import logging
 import os
 import subprocess
-from typing import Generator
+from typing import Generator, List
 
 
 @contextlib.contextmanager
@@ -53,3 +54,10 @@ def get_current_revision() -> str:
     git_command = [ "git", "rev-list", "--max-count", "1", "HEAD" ]
     git_command_result = subprocess.run(git_command, check = True, capture_output = True, text = True, encoding = "utf-8")
     return git_command_result.stdout.strip()
+
+
+def list_package_data(package: str, pattern_collection: List[str]) -> List[str]:
+    all_files = []
+    for pattern in pattern_collection:
+        all_files += glob.glob(package + "/" + pattern, recursive = True)
+    return [ os.path.relpath(path, package) for path in all_files ]
