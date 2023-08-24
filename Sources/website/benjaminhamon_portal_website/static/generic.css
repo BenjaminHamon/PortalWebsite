@@ -1,3 +1,14 @@
+h1, p, ul
+{
+	margin: 0;
+}
+
+button, input
+{
+	font-family: inherit;
+	font-size: 1em;
+}
+
 main > section
 {
 	display: flex;
