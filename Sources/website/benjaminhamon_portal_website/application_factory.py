@@ -14,10 +14,12 @@ request_logger = logging.getLogger("Request")
 
 
 def create_application() -> Application:
+    title = "Benjamin Hamon's portal website"
+
     flask_application = flask.Flask("benjaminhamon_portal_website")
     application = Application(flask_application)
 
-    configure(flask_application, "Benjamin Hamon's portal")
+    configure(flask_application, title)
     register_handlers(flask_application, application)
     register_routes(flask_application, application)
 
